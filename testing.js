@@ -80,3 +80,25 @@ const fruitsSlice = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
 const citrus = fruitsSlice.slice(1); // create new array, don't change source array
 console.log(citrus);
 
+// SORT ARRAY
+
+// 1- sort string
+
+// let cars = ['Bmw', 'RollRoyce', 'Audi', 'Toyota'];
+// console.log('Sorting', cars.sort());
+
+let numberic = [10, 20, 3, 40.50, 5];
+console.log(numberic.sort(function (a, b) { return b - a }));
+
+
+console.log('huy'.toLowerCase() > 'boooo'.toLowerCase());
+
+const cars = [
+    { type: "Volvo", year: 2016 },
+    { type: "Saab", year: 2001 },
+    { type: "BMW", year: 2010 }
+];
+
+cars.sort(function (a, b) { return a.year - b.year });
+console.log(cars);
+
