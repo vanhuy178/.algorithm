@@ -92,4 +92,4 @@ console.log('The even number is: ', result);
 
 //Return Function
 add = (x) => (y) => x + y; // 
-console.log(add(10)(20))
+console.log(add(10)(20));

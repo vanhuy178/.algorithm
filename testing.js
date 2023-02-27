@@ -37,7 +37,7 @@ const smartphone = {
 smartphone.run.apply({ model: 'galaxy s22' }, ["1", 'hek']);
 
 let modelSamsung = smartphone.run.bind({ model: 'xyz' }, '++');
-modelSamsung()
+modelSamsung();
 
 // CLOSURE FUNCTION
 const introAboutMe = () => {
@@ -143,3 +143,44 @@ Person.prototype.name = function () {
 const ps1 = new Person('huy', 'nguyen', 21, 'brown');
 
 console.log(ps1.name());
+
+// We can't add prototype in constructor function
+
+let array1 = [1, 2, 3];
+let array2 = [4, 5, 6];
+
+Array.prototype.unshift.apply(array1, array2);
+console.log({ array1 });
+
+let array3 = [1, 2, 3];
+let array4 = array3.slice();
+
+console.log({ array4 });
+
+// REVEAL FUNCTION
+function Car(type, fuelType) {
+    this.type = type;
+    this.fuelType = fuelType;
+}
+function setBrand(brand) {
+    Car.call(this, 'Convertible', 'petrol');
+    this.brand = brand;
+    console.log(`Car details = `, this);
+}
+
+function definePrice(price) {
+    Car.call(this, 'Convertible', 'petrol');
+    this.price = price;
+    console.log(`Car details = `, this);
+}
+
+const newBrand = new setBrand('Audi A7 sportback');
+const newPrice = new definePrice(1000000);
+
+
+function mountEntity(obj) {
+    this.entity = (obj) => console.log(obj);;
+    console.log(`Entity ${this.entity} is mounted on ${this}`);
+}
+
+mountEntity.call(this, 'hello');
