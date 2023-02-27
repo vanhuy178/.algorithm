@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>"this" keyword in Javascript</h1>
+
+</body>
+<script>
+    // 'this' keyword in method -> object
+    // 'this' keyowrd in function -> global, window
+
+    const video = {
+        title: 'a',
+        play() {
+            console.log(this);
+        }
+    }
+
+    video.stop = function () {
+        console.log(this); // confuse it too much
+    }
+
+    // video.stop(); // stop is the method of the object
+
+    function Video(title) {
+        this.title = title;
+        this.tags = [1, 2, 3];
+        this.showTag = this.tags.map(function (tag) {
+            console.log(this.title, tag);
+        }, this)
+        // this.handleCode = this.handleCode.bind(this)
+    }
+    let v = new Video('hello'); // if you use new keyword to call constructor function, it will create a new empty object and this will point to it
+    // v.showTag();
+
+    let person = {
+        firstName: 'Huy',
+        lastName: 'Nguyen',
+        fullName: function (intro) {
+            return intro + this.firstName + " " + this.lastName;
+        }
+    }
+
+    console.log(person.fullName('I love you '));
+
+    console.log(person.fullName.call({ firstName: 'Hiền', lastName: "Nguyễn" }, 'I love you '));
+    let crush = person.fullName.bind({ firstName: 'Code', lastName: 'Beauty' }); // create a new function
+    console.log(crush('I love you '));
+</script>
+
+</html>
