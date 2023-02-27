@@ -63,3 +63,33 @@ function removeNegativeNumber(listNumber, callback) {
 }
 let positiveNumber = removeNegativeNumber(myNumbers, x => x >= 0);
 console.log(positiveNumber.sort((a, b) => a - b));
+
+
+function add() { //A closure is a function having access to the parent scope, even after the parent function has closed.
+    let counter = 0; // private variable
+    function plus() { counter += 1; return counter }
+    return plus(); // call it but we also access to global scope
+}
+
+function everythingAboutMe(lastName, firstName) {
+    let intro = 'Xin chào mình là: '; // private variable
+    function fullName() { // closure function can use global var, params
+        return intro + lastName + firstName;
+    }
+    return fullName();
+};
+
+let intro = everythingAboutMe('Nguyen', 'Huy');
+
+console.log(intro);
+
+// function as arguments
+
+let isEven = x => x % 2 === 0;
+result = [1, 2, 3, 4].filter(isEven); // function as arguments;
+console.log('The even number is: ', result);
+
+
+//Return Function
+add = (x) => (y) => x + y;
+console.log(add(10)(20))

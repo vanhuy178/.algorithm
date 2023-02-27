@@ -3,5 +3,8 @@
 ## JavaScript
 
 1. array
-2. callback function, hof 
-
+2. callback function, hof , closure
+3. 4 ways to use function
+- pass them to other function
+- store a variable
+- set them as property of object
