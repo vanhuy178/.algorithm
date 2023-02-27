@@ -102,3 +102,44 @@ const cars = [
 cars.sort(function (a, b) { return a.year - b.year });
 console.log(cars);
 
+const numbers = [10, 40, 30, 20, 5, 40, 3, 4, 5];
+numbers.map(item => console.log(item)); // map method creates a new array by performing a function on each array elements.
+
+let over18 = numbers.filter(item => item > 18);
+console.log(over18); // creates a new array with array elements that pass a test;
+
+let sum = numbers.reduce((total, item) => total + item, 0); // Empty array but it has initial value it will return initial value
+console.log(sum);
+
+const fruits = ["Apple", "Orange", "Apple", "Mango"];
+let position = fruits.indexOf("Apple") + 1; // indexOf method searches an array for an element value and returns its position
+// const fruits = ["Apple", "Orange", "Apple", "Mango"];
+// let position = fruits.lastIndexOf("Apple") + 1;
+
+const newFruits = ["Banana", "Orange", "Apple", "Mango"];
+const keys = newFruits.entries();// return array itorator
+for (let x of keys) {
+    console.log(x);
+}
+
+function Person(first, last, age, eyecolor) {
+    this.firstName = first;
+    this.lastName = last;
+    this.age = age;
+    this.eyeColor = eyecolor;
+}
+
+Person.nationality = 'Viet Nam';
+
+let xiaomi = {
+    branch: 'Note 7',
+    price: '100000',
+    version: '++'
+}
+Person.prototype.name = function () {
+    return this.firstName + " " + this.lastName;
+};
+
+const ps1 = new Person('huy', 'nguyen', 21, 'brown');
+
+console.log(ps1.name());
