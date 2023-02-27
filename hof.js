@@ -91,5 +91,5 @@ console.log('The even number is: ', result);
 
 
 //Return Function
-add = (x) => (y) => x + y;
+add = (x) => (y) => x + y; // 
 console.log(add(10)(20))
