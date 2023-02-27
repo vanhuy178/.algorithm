@@ -51,3 +51,32 @@ console.log(Intro('Nguyen', 'Huy'));
 
 
 
+// Array
+
+let listPerson = ['hiền', 'hòa', 'huy', 'thảo'];
+
+// toString, join convert array to a string;
+console.log(listPerson.toString());
+
+console.log(listPerson.join('-'))
+
+// duplicated array;
+console.log(listPerson.concat(listPerson));
+
+// remove element from the array
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// fruits.pop(); // return value from pop();
+// console.log(fruits);
+
+// const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// fruits.unshift("Lemon");
+// console.log({ fruits });
+
+const fruitsSplice = ["Banana", "Orange", "Apple", "Mango"];
+let removefruitsSplice = fruitsSplice.splice(2, 0, 'Hello', 'Joo'); // change source array, if this has a second param the var will return the remove item;
+console.log(fruitsSplice)
+
+const fruitsSlice = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+const citrus = fruitsSlice.slice(1); // create new array, don't change source array
+console.log(citrus);
+
