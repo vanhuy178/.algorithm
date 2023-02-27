@@ -8,3 +8,9 @@
 - pass them to other function
 - store a variable
 - set them as property of object
+
+3. OOP
+- encapsulation
+- inheritance
+- polymorphism
+- abstraction
