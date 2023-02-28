@@ -82,8 +82,10 @@ class Person
     public string Introduce() => $"Hi, I'm {FullName}.";
 
     // CREATE CONSTRUCTOR
-    public Person()
+    public Person(string firstName, string lastName, byte age)
     {
-        Console.WriteLine("Called the Person's constructor");
+        FirstName = firstName;
+        LastName = lastName;
+        Age = age;
     }
 }
