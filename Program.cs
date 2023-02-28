@@ -1,23 +1,19 @@
 ﻿namespace _algorithm;
 class Program
 {
+
     static void Main(string[] args)
     {
-        decimal weightInKg, weightInLbs;
-        var converter = new Converter();
-        Console.WriteLine($"Convert weight from kg to lbs (factor = {Converter.Factor})");
-        while (true)
-        {
-            // Prompt to enter a weight in Kg:
-            Console.Write("Enter a weight in Kg (0 to exit):");
-            weightInKg = Convert.ToDecimal(Console.ReadLine());
+        // Program.cs
+        var sentence = new Sentence("C# is awesome");
+        ;
+        Console.WriteLine(sentence);
+        Console.WriteLine(sentence[0]);
+        Console.WriteLine(sentence[1]);
+        Console.WriteLine(sentence[2]);
 
-            if (weightInKg == 0)
-            {
-                break;
-            }
-        }
-        weightInLbs = converter.KgToPound(weightInKg);
-        Console.WriteLine($"{weightInKg}kg = {weightInLbs}lbs");
+        double[,] data = new double[3, 3];
+        Console.WriteLine(data);
+        Console.ReadLine();
     }
 }
