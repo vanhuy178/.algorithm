@@ -13,6 +13,6 @@ class Program
             Console.WriteLine($"Random number: {randomANumber.Next()}");
         }
         // config to pull
-
+        // ok đấy
     }
 }
