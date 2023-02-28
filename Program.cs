@@ -13,14 +13,6 @@ class Program
             Console.WriteLine($"Random number: {randomANumber.Next()}");
         }
 
-
-        var employee = new Employee
-        {
-            FirstName = "John",
-            LastName = "Doe",
-            Age = 25,
-            JobTitle = "C# Developer",
-            Salary = 120000
-        };
+        var employee = new Employee("John Doe");
     }
 }

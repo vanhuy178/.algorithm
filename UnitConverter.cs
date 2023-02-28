@@ -1,4 +1,4 @@
-class UnitConverter
+static class UnitConverter
 {
     public static double KgToLbs(double weight) => weight * 2.20462262185;
 

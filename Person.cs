@@ -90,7 +90,10 @@ class Person
     }
 
 
+<<<<<<< HEAD
     // pull
 
 
+=======
+>>>>>>> c8e9bf17fc22331050ea7668bef8f95efce37876
 }
