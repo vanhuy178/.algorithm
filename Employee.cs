@@ -2,8 +2,12 @@ class Employee : Person
 {
     public string JobTitle { get; set; }
     public decimal Salary { get; set; }
-    public Employee()
+    public Employee(string firstName, string lastName, byte age, string jobTitle, decimal salary)
+       : base(firstName, lastName, age)
     {
-        Console.WriteLine("Called the Employee's constructor");
+        JobTitle = jobTitle;
+        Salary = salary;
     }
+
+
 }
