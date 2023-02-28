@@ -71,19 +71,19 @@
 
 class Person
 {
-    public string Name;
+    public string FirstName { get; set; }
 
-    public static int Count = 0;
+    public string LastName { get; set; }
 
-    public static void MyMethod()
+    public byte Age { get; set; }
+
+    public string FullName => $"{FirstName} {LastName}";
+
+    public string Introduce() => $"Hi, I'm {FullName}.";
+
+    // CREATE CONSTRUCTOR
+    public Person()
     {
-        Console.WriteLine("params");
-    }
-    public Person(string name)
-    {
-        Name = name;
-
-        Count++; // static field
-        MyMethod(); // static method 
+        Console.WriteLine("Called the Person's constructor");
     }
 }

@@ -4,12 +4,6 @@ class Program
 
     static void Main(string[] args)
     {
-        // Program.cs
-        Person ps1 = new("Huy");
-
-        Console.WriteLine(ps1.Name);
-        Console.WriteLine(Person.Count);
-
         double weight = UnitConverter.KgToLbs(100);
         Console.WriteLine(weight);
         Random randomANumber = new Random();
@@ -18,5 +12,15 @@ class Program
         {
             Console.WriteLine($"Random number: {randomANumber.Next()}");
         }
+
+
+        var employee = new Employee
+        {
+            FirstName = "John",
+            LastName = "Doe",
+            Age = 25,
+            JobTitle = "C# Developer",
+            Salary = 120000
+        };
     }
 }
