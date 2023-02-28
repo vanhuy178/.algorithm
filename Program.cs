@@ -12,7 +12,7 @@ class Program
         {
             Console.WriteLine($"Random number: {randomANumber.Next()}");
         }
+        // config to pull
 
-        var employee = new Employee("John Doe");
     }
 }
