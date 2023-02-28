@@ -5,15 +5,18 @@ class Program
     static void Main(string[] args)
     {
         // Program.cs
-        var sentence = new Sentence("C# is awesome");
-        ;
-        Console.WriteLine(sentence);
-        Console.WriteLine(sentence[0]);
-        Console.WriteLine(sentence[1]);
-        Console.WriteLine(sentence[2]);
+        Person ps1 = new("Huy");
 
-        double[,] data = new double[3, 3];
-        Console.WriteLine(data);
-        Console.ReadLine();
+        Console.WriteLine(ps1.Name);
+        Console.WriteLine(Person.Count);
+
+        double weight = UnitConverter.KgToLbs(100);
+        Console.WriteLine(weight);
+        Random randomANumber = new Random();
+        RandomNumber randomNumber = new();
+        for (int i = 0; i < 5; i++)
+        {
+            Console.WriteLine($"Random number: {randomANumber.Next()}");
+        }
     }
 }
