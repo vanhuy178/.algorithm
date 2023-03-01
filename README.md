@@ -31,7 +31,7 @@
 
 ## STACK
 ![stack image](./image/Stack.jpg)
-1. I am using C#
+### I am using C#
 ```
 Stack.cs
 class Stack<T>
@@ -113,3 +113,4 @@ while (true)
     Console.WriteLine(color);
 }
 ```
+### I am usting JavaScript
