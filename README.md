@@ -88,7 +88,7 @@ class Program
 
 }
 ```
-1. How it works
+3. How it works
 - First, create a new instance of the Stack and specify the string as the type with the length of items.
 ```
 var color = new Stack<string>(3);
