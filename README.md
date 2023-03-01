@@ -36,7 +36,7 @@
 Stack.cs
 class Stack<T>
 {
-    int current = -1; // index at last array
+    int current = -1; 
     T[] items; // craete an array
 
     public Stack(int size) // create constructor
