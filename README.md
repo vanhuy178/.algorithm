@@ -57,7 +57,7 @@ class Stack<T>
         return false;
     }
 
-    public T? Pop() => !Empty ? items[--current] : default(T); // --items the value of x before the operator
+    public T? Pop() => !Empty ? items[current--] : default(T); // --items the value of x before the operator
 }
 ```
 2. how to use the ` Stack<T>` class
