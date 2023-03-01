@@ -1,13 +1,7 @@
+
 class Employee : Person
 {
     public string JobTitle { get; set; }
-    public decimal Salary { get; set; }
-    public Employee(string firstName, string lastName, byte age, string jobTitle, decimal salary)
-       : base(firstName, lastName, age)
-    {
-        JobTitle = jobTitle;
-        Salary = salary;
-    }
 
-
+    public new string Introduce() => $"Hi, I'm {Name}. I'm a {JobTitle}.";
 }

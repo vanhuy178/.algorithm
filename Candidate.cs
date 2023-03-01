@@ -1,0 +1,4 @@
+class Candidate : Person
+{
+
+}
