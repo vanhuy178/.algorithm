@@ -30,6 +30,7 @@
 
 
 ## STACK
+![stack image](./image/Stack.jpg)
 ```
 // I am using C#
 
