@@ -31,23 +31,23 @@
 
 ## STACK
 ![stack image](./image/Stack.jpg)
+1. I am using C#
 ```
-// I am using C#
-
-class Stack
+Stack.cs
+class Stack<T> //Use C# generic class to build reusable and type-neutral classes. 
 {
-    int current = -1;
-    string[] items;
+    int current = -1; // index at last array
+    T[] items; // craete an array
 
-    public Stack(int size)
+    public Stack(int size) // create constructor
     {
-        items = new string[size];
+        items = new T[size]; // create the size of array
     }
 
     public bool Empty => current == -1;
     public bool Full => current == items.Length - 1;
 
-    public bool Push(string item)
+    public bool Push(T item)
     {
         if (!Full)
         {
@@ -57,6 +57,59 @@ class Stack
         return false;
     }
 
-    public string? Pop() => !Empty ? items[current--] : null;
+    public T? Pop() => !Empty ? items[current--] : default(T);
+}
+```
+2. how to use the Stack<T> class
+```
+class Program
+{
+    public static void Main(string[] args)
+    {
+        var colors = new Stack<string>(3);
+
+        colors.Push("Red");
+        colors.Push("Green");
+        colors.Push("Blue");
+
+        while (true)
+        {
+            var color = colors.Pop();
+
+            if (color == null)
+            {
+                break;
+            }
+
+            Console.WriteLine(color);
+        }
+
+    }
+
+}
+```
+1. How it works
+- First, create a new instance of the Stack and specify the string as the type with the length of items.
+```
+var color = new Stack<string>(3);
+```
+- Second, call ```Push()``` method three times to push ```Green```,```Red```, and ```Blue``` strings into the stack.
+```
+colors.Push("Red");
+colors.Push("Green");
+colors.Push("Blue");
+```
+- Third, pop the string out of the stack until it is empty by calling the Pop() method.
+```
+while (true)
+{
+    var color = colors.Pop();
+
+    if (color == null)
+    {
+        break;
+    }
+
+    Console.WriteLine(color);
 }
 ```
