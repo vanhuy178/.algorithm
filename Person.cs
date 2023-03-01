@@ -10,4 +10,9 @@ class Person
         Name = name;
         Age = age;
     }
+    public override string ToString()
+    {
+        return $"Person(ssn={SSN},name={Name},age={Age})";
+
+    }
 }
