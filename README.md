@@ -21,12 +21,12 @@
 - A simple https principle includes: CREATE, READ, UPDATE, DELETE ---> CRUD operator
 - All the address can start with http or https, if you want to be exchanged on a secure, you should use https
 - architecture url: https://nguyenhuy.com/api/customers --> https: http protocol, nguyenhuy.com: domain, api: subdomain, customers: which refer to collection of customer in our application.
-- To get endpoint using http method to request into a server: GET, POST, PUT, DELETE
-    - GET api/customers --> send me list customers
-    - GET api/customers/1 --> send me a customer
-    - UPDATE(PUT) api/customers/1 --> update a customer
-    - DELETE(PUT) api/customers/1 --> delete a customer
-    - CREATE{POST} api/customres, includes data --> create a customer
+- To get endpoint using http method to request into a server: `GET`,`POST`, `PUT`, `DELETE`
+    - GET `api/customers` --> send me list customers
+    - GET `api/customers/1` --> send me a customer
+    - UPDATE(PUT)`api/customers/1` --> update a customer
+    - DELETE(PUT) `api/customers/1` --> delete a customer
+    - CREATE{POST} `api/customres` includes data --> create a customer
 
 
 ## STACK
@@ -57,10 +57,10 @@ class Stack<T>
         return false;
     }
 
-    public T? Pop() => !Empty ? items[current--] : default(T); // --items the value of x before the operator
+    public T? Pop() => !Empty ? items[--current] : default(T); // --items the value of x before the operator
 }
 ```
-2. how to use the Stack<T> class
+2. how to use the ` Stack<T>` class
 ```
 class Program
 {
@@ -99,7 +99,7 @@ colors.Push("Red");
 colors.Push("Green");
 colors.Push("Blue");
 ```
-- Third, pop the string out of the stack until it is empty by calling the Pop() method.
+- Third, pop the string out of the stack until it is empty by calling the ```Pop()``` method.
 ```
 while (true)
 {
