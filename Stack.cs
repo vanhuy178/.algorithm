@@ -24,28 +24,3 @@ class Stack<T>
 
     public T? Pop() => !Empty ? items[current--] : default(T); // --items the value of x before the operator
 }
-
-// class NewStack<T>
-{
-    T[] items;
-int current = -1;
-
-public bool Full => current == items.Length - 1;
-public bool Empty => current == -1;
-public NewStack(int size)
-{
-    items = new T[size];
-}
-
-public bool Push(T item)
-{
-    if (!Full)
-    {
-        items[++current] = item;
-        return true;
-    }
-    return false;
-}
-
-public T? Pop() => !Empty ? items[current--] : default(T);
-}
