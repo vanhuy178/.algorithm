@@ -1,5 +1,10 @@
 # Reviwe data structure and algorithm.
 
+## Time Complexity
+![big-0 image](./image/Big-0.png)
+
+- Link: https://vallicon.com/post/%C4%91%E1%BB%99-ph%E1%BB%A9c-t%E1%BA%A1p-th%E1%BB%9Di-gian-%28time-complexity%29-ar38zOBEwgR
+
 ## JavaScript
 
 1. array
