@@ -7,44 +7,157 @@ using static System.Console;
 
 class Program
 {
-    // ANOMYNOUS TYPE
-    // Object -> {properties = value, properties = value, ...} --> it is read only
-
-    class Students
+    class Animal
     {
-        public string Name { get; set; }
-        public int YearOfBirth { get; set; }
-        public string PlaceOfBirth { get; set; }
+        public virtual void AnimalSound() => WriteLine("The animal sounds");
     }
 
-    static string GetInfo(dynamic obj) // Dynamic
+    class Pig : Animal
     {
-        return $"{obj.Name}-{obj.PlaceOfBirth}";
+        public override void AnimalSound() => WriteLine("wee wee");
     }
 
-    class Abc
+    class Dog : Animal
     {
-        public void Hello() => WriteLine("nhìn cc");
+        public override void AnimalSound() => WriteLine("Gâu gâu");
     }
+
+    abstract class Product
+    {
+        protected double Price { get; set; }
+        public abstract void ProductInfo();
+        public void Test() => ProductInfo();
+    }
+
+    class Iphone : Product
+    {
+        public Iphone() => Price = 500;
+
+        public override void ProductInfo()
+        {
+            WriteLine("Nhìn cc");
+            WriteLine($"The pirce is: {Price}");
+        }
+    }
+
+    public delegate void ShowLog(string message);
+
+
+    // delegate 
+    delegate int NumberChanger(int n);
+    static int num = 10;
+    public static int AddNum(int p)
+    {
+        num += p;
+        return num;
+    }
+    public static int Multnum(int q)
+    {
+        num *= q;
+        return num;
+    }
+    public static int GetNum()
+    {
+        return num;
+    }
+    public delegate void ShowLogg(string message);
+    static void Info(string s)
+    {
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine(s);
+        Console.ResetColor();
+    }
+
+    static void Warning(string s)
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(s);
+        Console.ResetColor();
+    }
+
+    static void Add(int a, int b, ShowLogg logg)
+    {
+        int result = a + b;
+        logg?.Invoke($"The sum in logg is: {result}");
+    }
+    static int Minus(int a, int b) => a - b;
     static void Main(string[] args)
     {
 
+        ShowLogg slgg = null;// delegate is reference type so it can be null, delegate can be reference to multiple method 
+        WriteLine("The add with argument is: ");
+        Add(10, 20, Info);
+        slgg += Info;
+        slgg += Info;
+        slgg += Info;
+        slgg += Info;
+        slgg += Warning;
+        slgg += Warning;
 
-        Abc a = new Abc();
-        a?.Hello(); // ---> it will be the same
-        if (a != null)
-        {
-            a.Hello();
-        }
+        slgg?.Invoke("Love everyone");
 
-        int? age; // age can assign null value
-        age = 21;
+        NumberChanger nc;
+        NumberChanger nc1 = new NumberChanger(AddNum);      // ref to AddNum method
+        NumberChanger nc2 = new NumberChanger(Multnum);     // ref to Multnum method
 
-        if (age.HasValue)
-        {
-            int _age = age.Value;
-            WriteLine("Your age is: " + _age);
-        }
+        nc = nc1;   // multiple delegate
+        nc += nc2;
+        nc(5);
+        WriteLine("The GetNum is");
+        WriteLine(GetNum());
+        Console.ReadKey();
+
+        // Next we talk about Action and Func: this is two delegate build-in by .net, It has generic.
+        Action ac1;     // --> delegate void ac1(no params);
+        Action<string, int> ac2;    // --> delegate void ac2(string s, int i)
+        Action<string> ac3; // delegate void ac3<string s> --> because it received string, and void so we can use two method Info, Warning. 
+
+        ac3 = Warning;
+        ac3 += Info;
+        Console.WriteLine("Action 3:");
+        ac3.Invoke("Love baby");
+
+        // Func is the same action but it must have return value
+        //Func<int> f1; // -> delegate int f1();
+        //Func<int, string, int> f2; // -> delegate int (int i ,  string s); // the last params is the return value
+
+        Func<int, int, int> calulator;
+        int a = 10;
+        int b = 10;
+        // calulator = Add;
+        // WriteLine($"Sum: {calulator(a, b)}");
+        calulator = Minus;
+        WriteLine($"Minus: {calulator(a, b)}");
+
+
+
+        // Product p1 = new Product(); --> raise error
+        // Iphone iphone12 = new Iphone();
+        // iphone12.ProductInfo();
+
+
+        // Animal animal = new();
+        // Animal pig = new Pig();
+        // Animal dog = new Dog();
+        // animal.AnimalSound();
+        // pig.AnimalSound();
+        // dog.AnimalSound();
+
+        // Abc a = new Abc();
+        // a?.Hello(); // ---> it will be the same
+        // if (a != null)
+        // {
+        //     a.Hello();
+        // }
+
+        // int? age; // age can assign nullable value
+        // age = 21;
+
+        // if (age.HasValue)
+        // {
+        //     int _age = age.Value;
+        //     WriteLine("Your age is: " + _age);
+        // }
 
 
         // Class1.Hello();
@@ -78,23 +191,23 @@ class Program
         // }
 
         // THIS IS AN ANOMYNOUS TYPE WITH QUERRY DATA ;
-        List<Students> studentsList = new List<Students>() {
-            new Students() {Name = "Nguyen Van Huy", YearOfBirth = 2002, PlaceOfBirth = "TIen Giang"},
-            new Students() {Name = "Xuan Hien", YearOfBirth = 1994, PlaceOfBirth = "Binh Thuan"},
-            new Students() {Name = "Hoa", YearOfBirth = 2002, PlaceOfBirth = "Binh Thuan"}
-        };
+        // List<Students> studentsList = new List<Students>() {
+        //     new Students() {Name = "Nguyen Van Huy", YearOfBirth = 2002, PlaceOfBirth = "TIen Giang"},
+        //     new Students() {Name = "Xuan Hien", YearOfBirth = 1994, PlaceOfBirth = "Binh Thuan"},
+        //     new Students() {Name = "Hoa", YearOfBirth = 2002, PlaceOfBirth = "Binh Thuan"}
+        // };
 
-        var result = from student in studentsList
-                     where student.Name.Contains("ien")
-                     select new
-                     {
-                         Name = student.Name,
-                         PlaceOfBirth = student.PlaceOfBirth
-                     };
+        // var result = from student in studentsList
+        //              where student.Name.Contains("ien")
+        //              select new
+        //              {
+        //                  Name = student.Name,
+        //                  PlaceOfBirth = student.PlaceOfBirth
+        //              };
 
-        foreach (var studentResult in result)
-        {
-            WriteLine($"Full name is: {studentResult.Name}, Place is: : {studentResult.PlaceOfBirth} ");
-        }
+        // foreach (var studentResult in result)
+        // {
+        //     WriteLine($"Full name is: {studentResult.Name}, Place is: : {studentResult.PlaceOfBirth} ");
+        // }
     }
 }
