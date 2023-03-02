@@ -3,8 +3,16 @@ using MyNameSpace;
 using MyNameSpace.Abc;
 using SanPham;
 using static System.Console;
-
-
+using System.Linq;
+using MyLib;
+static class Abc
+{
+    public static void Print(this string s, ConsoleColor color)
+    {
+        ForegroundColor = color;
+        WriteLine(s);
+    }
+}
 class Program
 {
     // publisher --> class --> play events;
@@ -59,13 +67,40 @@ class Program
             WriteLine($"The square of {i} is: {(i * i)}");
         }
     }
+
+
+
+
+
     static void Main(string[] args)
     {
         UserInput userInput = new UserInput(); // userinput play event --> publisher
-        SquareRoot squareRoot = new SquareRoot();
-        Squaree squaree = new Squaree();
-        squareRoot.Sub(userInput);
-        squaree.Sub(userInput);
-        userInput.Input();
+
+        SquareRoot squareRoot = new SquareRoot(); // subcriber
+        Squaree squaree = new Squaree();    // subcriber
+        // squareRoot.Sub(userInput);
+        // squaree.Sub(userInput);
+        // userInput.Input();
+
+
+        // EXTENSION METHOD
+        int[] array = { 1, 2, 34, 5 };
+        var max = array.Max();
+        WriteLine(max);
+
+        // extension method 
+
+        string s = "Hello world";
+        s.Print(ConsoleColor.Green); // This is extension method
+        "Hello".Print(ConsoleColor.Blue);
+
+
+        // Using extension method
+
+        int x = 105;
+        WriteLine(x.MySquare());
+        WriteLine(x.MySin());
+        WriteLine(x.MyCos());
+        WriteLine(x.MySquareRoot());
     }
 }
