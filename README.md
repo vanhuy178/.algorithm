@@ -121,30 +121,30 @@ while (true)
             this.items = [];
         }
 
-        // isEmpty
-        // Pop
-        // Push
-
         // 1 - Push()
 
         push(element) {
             return this.items.push(element);
         }
-
+        
+        //2 - Pop()
         pop() {
             if (this.items.length === 0) { // if stack is empty 
                 return "Underflow";
             }
             return this.items.pop(); // remove the last element --> top element in stack
         }
-
+        
+        //3 - Peek() 
         peek() {
             return this.items[this.items.length - 1]; //Return the top most element without removing it from the stack.
         }
-
+        
+        // Check empty
         isEmpty() { // return true if stack is empty
             return this.items.length == 0;
         }
+        
         // printStack function
         printStack() {
             var str = "";
