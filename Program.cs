@@ -81,8 +81,75 @@ class Program
         logg?.Invoke($"The sum in logg is: {result}");
     }
     static int Minus(int a, int b) => a - b;
+
+    // We talk about lamda - anomynous function
+    // 1- (params) => expression;
+    // 2- (params) => { expression; return expression; }
     static void Main(string[] args)
     {
+        Action hi;
+        hi = () => WriteLine("Hi fen");
+        hi?.Invoke();
+
+        Action<string, string> welcome;
+        welcome = (mgs, name) =>
+        {
+            ForegroundColor = ConsoleColor.Yellow;
+            WriteLine($"{mgs} {name}");
+            ResetColor();
+        };
+        welcome("Welcome to my Home", "Hien");
+
+        // how to write lamda expression and how can we use it;
+        Action<string> message;
+        message = (string a) => WriteLine(a); // ~ delegate void message(string s) ~ Action<string>
+        message("Delegate with lamda expression");
+
+        Func<int, int, int> calculator; // ~delegate int calculator(int a, int b) 
+        calculator = (int a, int b) =>
+         {
+             int sum = a + b;
+             return sum;
+         };
+
+        calculator(10, 10);
+
+
+
+        // Lamda expression in ASP.NET core
+
+        // Example;
+
+        int[] arrayNumber = { 1, 3, 4, 5, 6, 7, 9, 10 };
+        WriteLine("arrayNumber.ToList().ForEach");
+        arrayNumber.ToList().ForEach((x) =>
+        {
+            if (x % 2 == 0)
+            {
+                WriteLine(x);
+            }
+        });
+
+        var divideFour = arrayNumber.Where((a) =>
+         {
+             return a % 4 == 0;
+         }
+         );
+
+        // var result = arrayNumber.Select((int item) =>
+        // { // must have return value
+        //     return Math.Sqrt(item);
+
+        // }); // select is same with map JavaScript;
+        // foreach (var item in result)
+        // {
+        //     WriteLine("The result of arrayNumber with Select method: " + item);
+        // }
+
+
+
+
+
 
         ShowLogg slgg = null;// delegate is reference type so it can be null, delegate can be reference to multiple method 
         WriteLine("The add with argument is: ");
@@ -128,8 +195,6 @@ class Program
         // WriteLine($"Sum: {calulator(a, b)}");
         calulator = Minus;
         WriteLine($"Minus: {calulator(a, b)}");
-
-
 
         // Product p1 = new Product(); --> raise error
         // Iphone iphone12 = new Iphone();
