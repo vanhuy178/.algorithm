@@ -6,6 +6,7 @@ using static System.Console;
 using System.Linq;
 using MyLib;
 using MyException;
+using System.Collections.Generic;
 static class Abc
 {
     public static void Print(this string s, ConsoleColor color)
@@ -14,6 +15,17 @@ static class Abc
         WriteLine(s);
     }
 }
+
+class Product
+{
+    public string Name { get; set; }
+    public double Price { get; set; }
+
+    public int Id { get; set; }
+
+    public string Origin { set; get; }
+}
+
 class Program
 {
     // publisher --> class --> play events;
@@ -209,8 +221,108 @@ class Program
 
 
 
+
     static void Main(string[] args)
     {
+
+        // SORTED LIST includes key:value
+        SortedList<string, Product> sortedList = new SortedList<string, Product>();
+
+        // intialize key and value like this
+        sortedList["sp1"] = new Product() { Name = "Nokia", Price = 1000000, Origin = "Thụy điển" };
+
+        List<Product> products = new List<Product>() {
+            new Product() {Name = "Iphone", Price = 10000000, Id= 001, Origin= "Như qq"},
+            new Product() {Name = "Xiaomi", Price = 9000000, Id= 002, Origin= "Như lol"},
+            new Product() {Name = "Samsung", Price = 10000000000, Id= 003, Origin= "Như cc"}
+        };
+        var p = products.Find((e) => e.Origin == "Như lol");
+        if (p != null)
+        {
+            WriteLine($"The price is: {p.Name} - {p.Price} {p.Origin}");
+        }
+
+        products.Sort((a, b) =>
+        {
+            if (a.Price == b.Price) return 0;
+            if (a.Price < b.Price) return 1; // desc
+            return -1;
+            // if (a.Price < b.Price) return -1; // asc
+            // return 1;
+
+        });
+
+        foreach (var item in products)
+        {
+            WriteLine("Product after sorting : " + item.Price);
+        }
+
+
+        List<string> dinosaurs = new List<string>();
+        dinosaurs.Add("Tyrannosaurus");
+        dinosaurs.Add("Amargasaurus");
+        dinosaurs.Add("Mamenchisaurus");
+        dinosaurs.Add("Brachiosaurus");
+        dinosaurs.Add("Compsognathus");
+        Console.WriteLine();
+        foreach (string dinosaur in dinosaurs)
+        {
+            Console.WriteLine(dinosaur);
+        }
+
+
+
+
+
+
+        List<int> one_list = new List<int>() { 9, 10, 14 };
+        List<int> myListInt = new List<int>();
+
+        // intialize with capacity
+        List<int> myListInt2 = new List<int>(5) { 1, 2, 34 };
+
+        List<int> myListInt3 = new List<int>(myListInt2); // use another collection, it must be the same type!!!;
+
+        WriteLine("Item in list item 2 is: " + myListInt3.Count()); // return an integer item is the length of list
+
+        WriteLine("Capacity of List item 2 is: " + myListInt3.Capacity);
+
+        WriteLine("is 34 in myListInt3? --> " + myListInt3.Contains(34));
+
+
+
+        // Linked list
+        one_list.Add(4); // add item into list
+        one_list.Add(4); // add item into list
+        one_list.Add(4); // add item into list
+        one_list.Insert(0, 3);  // inset item into an index
+        one_list.Remove(4);
+        one_list.RemoveAt(1);
+        // one_list.RemoveAll();
+        // one_list.Remove();
+        // one_list.Clear();
+
+
+        var one_listWithFindMethod = one_list.FindAll(
+             (e) => e % 2 == 0
+         );
+
+        foreach (var item in one_listWithFindMethod)
+        {
+            WriteLine("One list with line method (find the first item devide by two): " + item);
+        }
+
+
+
+        foreach (var itemList in one_list)
+        {
+            WriteLine("The item of the list is: " + itemList);
+        };
+
+        var n = one_list.Find((e) =>
+        {
+            return e % 2 == 0;
+        });
 
         LinkedList<string> listLesson = new LinkedList<string>();
         var lesson1 = listLesson.AddFirst("Lesson1");
@@ -228,12 +340,12 @@ class Program
         //     WriteLine("List lesson: " + data);
         // }
 
-        var node = lesson5;
-        while (node != null)
-        {
-            WriteLine(node.Value);
-            node = node.Previous;
-        }
+        // var node = lesson5;
+        // while (node != null)
+        // {
+        //     WriteLine(node.Value);
+        //     node = node.Previous;
+        // }
 
         Dictionary<string, int> CounterSystem = new Dictionary<string, int>()
         {
@@ -288,7 +400,14 @@ class Program
             Console.WriteLine(" }");
         }
 
-
+        // list 
+        List<int> listNumberFriends = new List<int>();
+        listNumberFriends.Add(1);
+        listNumberFriends.Add(1);
+        listNumberFriends.Add(3);
+        listNumberFriends.AddRange(new int[] { 1, 2, 3, 4 });
+        // Count 
+        WriteLine("The length of the ListNumberFriends is: " + listNumberFriends.Count);
 
         Stack<string> inventory = new Stack<string>();
         // Push into stack
