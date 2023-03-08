@@ -31,7 +31,7 @@ function BBSort(arr) {
                 var temp = arr[j]
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
-                console.log(arr[j], arr[j + 1]); 
+                console.log(arr[j], arr[j + 1]);
                 console.log(arr);
                 isSwapped = true;
             }
@@ -45,11 +45,11 @@ function BBSort(arr) {
     return arr;
 }
 
-var arr = [243, 45, 23, 356, 3, 5346, 35, 5];
-console.log(
-    BBSort(arr)
-);
-// VISUALIZATION 
+// var arr = [243, 45, 23, 356, 3, 5346, 35, 5];
+// console.log(
+//     BBSort(arr)
+// );
+// VISUALIZATION
 
 // { i: 0 }
 // { j: 0 }
@@ -204,3 +204,28 @@ console.log(
 //    35,   45, 243,
 //   356, 5346
 // ]
+
+console.log('Jquery');
+
+// 1. Syntax $(selector).action()
+$(document).ready(function () {
+    // console.log('hei');
+
+    $("button").click(function () {
+        $("p").hide();
+    })
+
+    // mounseleave, mounsehover
+
+    $("#hide").click(function () {
+        $("p").hide()
+    })
+    $("#show").click(function () {
+        $("p").show()
+    })
+
+
+})
+
+// 2. 
+

@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Bootstrap</title>
 </head>
 
 <body>
     <h1>"this" keyword in Javascript</h1>
 
+    <!--  -->
 </body>
 <script>
     // 'this' keyword in method -> object
@@ -48,11 +51,11 @@
         }
     }
 
-    console.log(person.fullName('I love you '));
+    // console.log(person.fullName('I love you '));
 
-    console.log(person.fullName.call({ firstName: 'Hiền', lastName: "Nguyễn" }, 'I love you '));
+    // console.log(person.fullName.call({ firstName: 'Hiền', lastName: "Nguyễn" }, 'I love you '));
     let crush = person.fullName.bind({ firstName: 'Code', lastName: 'Beauty' }); // create a new function
-    console.log(crush('I love you '));
+    // console.log(crush('I love you '));
 
     //Stack in JavaScript
 
@@ -126,6 +129,7 @@
 
 </script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="./bubbleSort.js">
 
 </script>
