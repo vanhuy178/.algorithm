@@ -23,7 +23,7 @@ function BBSort(arr) {
         isSwapped = false;
         console.log({ i });
 
-        for (j = 0; j < len; j++) {
+        for (j = 0; j < len - i - 1; j++) {
             console.log({ j });
 
             if (arr[j] > arr[j + 1]) {
@@ -205,27 +205,115 @@ function BBSort(arr) {
 //   356, 5346
 // ]
 
-console.log('Jquery');
-
-// 1. Syntax $(selector).action()
-$(document).ready(function () {
-    // console.log('hei');
-
-    $("button").click(function () {
-        $("p").hide();
-    })
-
-    // mounseleave, mounsehover
-
-    $("#hide").click(function () {
-        $("p").hide()
-    })
-    $("#show").click(function () {
-        $("p").show()
-    })
-
-
-})
 
 // 2. 
+console.log("Callback");
+function call() {
+    console.log('alo!!');
+}
 
+function findNumber(callback) {
+    let ok = true;
+
+    let result = ok ? callback() : null
+
+    return result;
+}
+
+findNumber(call)
+
+
+// cơ chế hoisting
+// đưa các phần khai biến lên đầu
+
+var name = "hi";
+
+// check type and hoistiing
+(function () {
+    if (typeof name === 'undefined') {
+        var name = "crush";
+        console.log("Hello " + name);
+    }
+    else {
+        console.log("goodbye" + name);
+    }
+})()
+
+
+//Tạo ra 1 mẫu khởi tạo, cũng là tạo ra 1 prototype object
+function Person(_age, _name) {
+    this.age = _age;
+    this.name = _name;
+}
+
+//Có thể thêm thuộc tính vào thuộc tính prototype của hàm khởi tạo
+Person.prototype.height = 0;
+
+//Tạo ra 1 instance của Person
+//Có cả 3 thuộc tính của mẫu khởi tạo Person
+var jack_person = new Person(10, "Jack");
+for (var att in jack_person) {
+    console.log(att);
+}
+
+//Xem đối tượng prototype của instance vừa tạo
+jack_person.__proto__;
+
+
+function Animal(_age) {
+    this.age = _age;
+}
+
+function Dog(_color) {
+    this.color = _color;
+}
+
+Animal.prototype.showAge = function () {
+    console.log(this.age);
+}
+Dog.prototype = new Animal();
+Dog.prototype.showColor = function () {
+    console.log(this.color);
+};
+
+let Dogki = new Dog("Red");
+Dogki.age = 10;
+
+console.log(Dogki);
+Dogki.showColor();
+
+// //Tạo ra 1 hàm khởi tạo cơ sở
+// function Animal(_age) {
+//     this.age = _age;
+// }
+
+// //Có thể thêm thuộc tính vào thuộc tính prototype của hàm khởi tạo
+// Animal.prototype.showAge = function () {
+//     console.log(this.age);
+// };
+
+// //Tạo ra 1 hàm khởi tạo con (sẽ dùng để kế thừa hàm cơ sở)
+// function Dog(_color) {
+//     this.color = _color;
+// }
+// //Thực hiện kế thừa, gán hàm khởi tạo của Animal cho prototype của Dog
+// Dog.prototype = new Animal();
+// Dog.prototype.showColor = function () {
+//     console.log(this.color);
+// };
+
+// //Kiểm tra sự kế thừa
+// var chophuquoc = new Dog('yellow');
+// chophuquoc.age = 3;
+// chophuquoc.showAge();     //3
+// chophuquoc.showColor();     //yellow
+
+
+// sort
+// 1. bubble sort
+// 3. insertion sort : ( set a mark for sorted section after the first element , repeat the following untill section is emptys )
+// 4. selection sort:
+
+// 5. radix sort:
+// 6. merge sort:
+// 7. quick sort: 
