@@ -113,5 +113,247 @@ function myForEach_1(arr: any[], callback: (arg: any, index?: number) => void) {
     }
 }
 
-function len(s: string): number;
-function len(arr: any[]): number;
+function renderItem(arr: any[], callback: (arg: any, index?: number) => void) {
+    for (let i = 0; i < arr.length; i++) {
+        callback(arr[i], i);
+    }
+}
+
+function multipe(a: number, ...m: number[]) {
+    return m.map(x => a * x);
+}
+
+class Shape {
+    x: number
+    y: number
+    area(): number {
+        return this.x * this.y;
+    }
+}
+
+interface PaintOptions {
+    shape: Shape;
+    xPos?: number;
+    yPos?: number;
+}
+
+
+function paintShape(opts: PaintOptions) {
+    let xPos = opts.xPos === undefined ? 0 : opts.xPos;
+
+    let yPos = opts.yPos === undefined ? 0 : opts.yPos;
+
+};
+
+function paintShape2({ shape, xPos = 0, yPos = 0 }: PaintOptions) {
+    console.log('x coornidate at', xPos);
+    console.log('y coornidate at', yPos);
+}
+
+const shape = new Shape()
+paintShape({ shape, xPos: 100, })
+paintShape({ shape, yPos: 100, })
+
+interface SomeType {
+    readonly prop: string; // can't be written to during type-checking
+}
+
+function doCC(obj: SomeType): void {
+    console.log('the value is: ' + obj.prop);
+
+    // But we can't re-assign it.
+    //obj.prop = "hello"
+}
+// In other words, its internal contents can be changed. It just means the property itself can't be re-written
+
+interface Home {
+    readonly resident: { name: string, age: number }
+}
+
+function visitForBirthday(home: Home) {
+    // We can read and update properties from home.resident 
+    console.log(`Happy birthday ${home.resident.age}`);
+    home.resident.age++;
+}
+
+function evict(home: Home) {
+    // but we can't write to the 'resident' property itself on a "Home";
+
+    // home.resident = {
+    //     wow: 'wow',
+    //     'meomeo': 'memeo'
+    // }
+}
+
+interface Person {
+    name: string;
+    age: number;
+}
+
+interface ReadonlyPerson {
+    readonly name: string;
+    readonly age: number;
+}
+
+let writablePerson: Person = {
+    name: "Nguyen Van Huy",
+    age: 21
+}
+
+
+let readonlyPerson: ReadonlyPerson = writablePerson;
+console.log(readonlyPerson.age); // prints '42'
+writablePerson.age++;
+console.log(readonlyPerson.age); // prints '43'
+
+// index
+interface ReadOnlyNumberDictionany {
+    readonly [index: string]: number | string;
+}
+
+let array: ReadOnlyNumberDictionany
+
+// extends
+
+interface BasicAddress {
+    name?: string,
+    street: string,
+    city: string,
+    country: string,
+    postalCode: string
+}
+
+interface AddressWithUnit extends BasicAddress {
+    unit: string;
+}
+
+// interface can also extend from multiple types
+
+interface Colorful {
+    color: string
+}
+
+interface Circle {
+    radius: number
+}
+
+interface ColorfulCircle extends Colorful, Circle { }
+
+const cc: ColorfulCircle = {
+    color: 'red',
+    radius: 42
+}
+
+
+// intersection types
+function draw(circle: Colorful & Circle) {
+    console.log(`Color was ${circle.color}`)
+    console.log(`Radius was ${circle.radius}`);
+}
+
+draw({ color: 'blue', radius: 42 })
+
+// Interface and intersections
+interface Box {
+    contents: unknown
+}
+
+let x: Box = {
+    contents: 'cc'
+}
+
+if (typeof x.contents === 'string') {
+    console.log(x.contents.toLowerCase())
+}
+
+console.log((x.contents as string).toLocaleLowerCase());
+
+interface NumberBox {
+    contents: number;
+}
+
+interface StringBox {
+    contents: string;
+}
+
+interface BooleanBox {
+    contents: boolean
+}
+function setContents(box: StringBox, newContents: string): void;
+function setContents(box: NumberBox, newContents: number): void;
+function setContents(box: BooleanBox, newContents: boolean): void;
+function setContents(box: { contents: any }, newContents: any) {
+    box.contents = newContents;
+}
+
+interface Box2<Type> {
+    contents: Type
+}
+
+let box2: Box2<string>;
+
+let box2a: Box2<string> = { contents: 'hello' };
+box2a.contents;
+
+type OrNull<Type> = Type | null;
+
+type OneOrMany<Type> = Type | Type[];
+
+type OneOrManyOrNull<Type> = OrNull<OneOrMany<Type>>;
+
+type OneOrManyOrNullStrings = OneOrManyOrNull<string>;
+
+function doSt(value: Array<string>) {
+
+}
+
+let myArray: string[] = ["hello", "world"];
+
+// either of these work!
+
+doSt(myArray);
+doSt(new Array("hello", 'cc'));
+
+
+// Much like the type above, Array itself is a generic type
+interface TheArrayOfMe<Type> {
+    /**
+     * Gets or sets the length of the array
+     * 
+     * 
+     */
+    length: number;
+
+    /**
+     * Removes the last element from an array and returns it
+     * 
+     * 
+     */
+
+    pop(): Type | undefined
+
+    /**
+     * 
+     * 
+     * Appends new elements to an array, and returns the new length of the array.
+     */
+
+    push(...item: Type[]): number;
+
+}
+
+function deStuff(values: ReadonlyArray<string>) {
+    // we can read from value;
+
+    const copy = values.slice();
+
+    console.log(
+        `The first value is ${values[0]}`
+    );
+
+    // ...but we can't mutate 'value'
+
+    // values.push('hello!')
+
+}
+
